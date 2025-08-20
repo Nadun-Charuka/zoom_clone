@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
+import 'package:zoom_clone/core/keys.dart';
 import 'package:zoom_clone/features/auth/services/auth_services.dart';
 
 class AppMainScreen extends StatelessWidget {
@@ -21,6 +23,32 @@ class AppMainScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class VideoConferencePage extends StatelessWidget {
+  final String conferenceID;
+
+  const VideoConferencePage({
+    super.key,
+    required this.conferenceID,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      // !mark(1:8)
+      child: ZegoUIKitPrebuiltVideoConference(
+        appID: int.parse(
+          zegoAppID,
+        ),
+        appSign: zegoAppSign,
+        userID: 'user_id',
+        userName: 'user_name',
+        conferenceID: conferenceID,
+        config: ZegoUIKitPrebuiltVideoConferenceConfig(),
       ),
     );
   }

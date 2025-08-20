@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zoom_clone/core/providers/auth_provider.dart';
 import 'package:zoom_clone/features/auth/screens/google_login_screen.dart';
@@ -12,7 +11,6 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await dotenv.load(fileName: ".env");
   runApp(ProviderScope(child: const MyApp()));
 }
 
