@@ -54,16 +54,26 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
           children: [
             _isLoading
                 ? CircularProgressIndicator()
-                : ElevatedButton.icon(
-                    onPressed: () {
-                      _singInWithGoogle();
-                    },
-                    label: Text("SignIn with Google"),
-                    icon: Image.asset(
-                      "assets/google.png",
-                      width: 40,
-                      height: 40,
-                    ),
+                : Column(
+                    spacing: 20,
+                    children: [
+                      Image.asset(
+                        "assets/images/zoom-app.png",
+                        width: double.infinity,
+                        height: 400,
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          _singInWithGoogle();
+                        },
+                        label: Text("SignIn with Google"),
+                        icon: Image.asset(
+                          "assets/images/google.png",
+                          width: 40,
+                          height: 40,
+                        ),
+                      ),
+                    ],
                   ),
           ],
         ),
