@@ -4,11 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthServices {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  static final FirebaseAuth _auth = FirebaseAuth.instance;
+  static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
   static bool isInitialize = false;
 
-  Future<void> initSignIn() async {
+  static Future<void> initSignIn() async {
     if (!isInitialize) {
       await _googleSignIn.initialize(
         serverClientId:
@@ -18,7 +18,7 @@ class AuthServices {
     isInitialize = true;
   }
 
-  Future<UserCredential?> signInWithGoogle() async {
+  static Future<UserCredential?> signInWithGoogle() async {
     try {
       initSignIn();
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
@@ -81,7 +81,7 @@ class AuthServices {
     }
   }
 
-  Future<void> signOut() async {
+  static Future<void> signOut() async {
     try {
       await _googleSignIn.signOut();
       await _auth.signOut();
